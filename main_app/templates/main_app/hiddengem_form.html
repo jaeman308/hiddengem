@@ -1,0 +1,16 @@
+{% extends 'main_app/base.html' %}
+
+{% block content %}
+<div class="page-header">
+<h1>New Hidden Gem</h1>
+</div>
+<forms action="" method="post" class="form-contianer">
+    {% csrf_token %}
+    <table>
+        {{ form.as_table}}
+    </table>
+    <button typ="submit" class="btn">Post Hidden Gem</button>
+</forms>
+
+
+{% endblock %} 
