@@ -1,0 +1,15 @@
+{% extends 'main_app/base.html' %}
+
+{% block head %}
+<!-- css link will go here once we start getting it styled -->
+{% endblock %}
+
+{% block content %}
+<section class="login-container">
+    <form action="{% url 'login' %}" method="post" class="login">
+        {% csrf_token %} {{ form.as_p }}
+        <input type="hidden" name="next" value="{{ next}}"/>
+        <button type="submit">Login</button>
+    </form> 
+</section>
+{% endblock %}
