@@ -5,11 +5,14 @@
 {% endblock %}
 
 {% block content %}
+{% if not user.is_authenaticated %}
 <section class="login-container">
+    <img src="https://i.postimg.cc/qq2yv9qk/2.png" alt="login letters"/>
     <form action="{% url 'login' %}" method="post" class="login">
         {% csrf_token %} {{ form.as_p }}
         <input type="hidden" name="next" value="{{ next}}"/>
         <button type="submit">Login</button>
     </form> 
 </section>
+{% endif %}
 {% endblock %}
