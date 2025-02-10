@@ -36,7 +36,7 @@ class HiddenGem(models.Model):
 
     
 
-class Activty(models.Model):
+class Activity(models.Model):
     comment = models.TextField()
     like = models.IntegerField(default=0)
 

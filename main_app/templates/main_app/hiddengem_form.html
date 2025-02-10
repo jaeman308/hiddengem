@@ -1,15 +1,20 @@
 {% extends 'main_app/base.html' %}
+{% load static %}
+{% block head%}
+    <link rel="stylesheet" href="{% static 'css/form.css' %}">
+{% endblock %}
 
 {% block content %}
 <div class="page-header">
-<h1>New Hidden Gem</h1>
+<img src="https://i.postimg.cc/NjdggYWk/Untitled-design-13.png" alt="location and map"/>
+<h1>New Gem</h1>
 </div>
-<forms action="" method="post" class="form-contianer">
+<form action="" method="post" class="form-contianer">
     {% csrf_token %}
     <table>
         {{ form.as_table}}
     </table>
-    <button typ="submit" class="btn">Post Hidden Gem</button>
+    <button type="submit" class="btn">Post Hidden Gem</button>
 </forms>
 
 

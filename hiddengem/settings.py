@@ -119,7 +119,10 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+LOGIN_URL = 'userhome'
+
 LOGIN_REDIRECT_URL = 'hiddengem-index'
+
 LOGOUT_REDIREECT_URL = 'home'
 
 # Default primary key field type
