@@ -39,12 +39,127 @@ html {
 
 body {
     margin: 0;
+    font-family: 'Montserrat', 'Alef', sans-serif;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 100vh;
-    font-family: 'monsterrat', 'alef-regular', 'alef-bold'; 
-    min-height: 100vh;
-    --nav-bg: ;
-
+    background-color: white;
+    color: var(--text-color);
 }
+
+:root {
+    --nav-bg: #E96842;
+    --nav-bg-ff: black;
+    --borders: #C4563B;
+    --text-color: black;
+    --link-hover-color: #A477B2;
+    --button-bg: white;
+    --button-bg-hover: white;
+    --submit: rgb(26, 128, 0);
+    --warn: rgb(255, 102, 0);
+    --danger: rgb(220, 20, 30);
+    --secondary: #E4B0A6;
+    --card-box-shadow: 5px 5px 6px -1px #aaa;
+    --font-xtreme: 4.2rem;
+    --font-xxl: 3.6rem;
+    --font-xl: 2.4rem;
+    --font-l: 1.8rem;
+    --font-reg: 1.6rem;
+    --card-border-radius: 6px;
+}
+
+header {
+  width: 100%;
+  background-color: #ffff;
+  padding: 1rem 0;
+  box-shadow: 0 2px 4px light grey;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;  
+}
+.header-logo-container{
+  padding: 0 2rem;
+}
+
+.page-header h1{
+  font-size: var(--font-xxl);
+  margin: 0;
+  font-family: 'Montserrat';
+}
+
+.page-header h2 {
+  font-size: var(--font-l);
+}
+
+.page-content {
+  font-size: var(--font-reg);
+}
+
+.logo-image {
+  max-width: 150px;
+  height: auto;
+  display: block;
+}
+
+nav {
+  margin: 0 2rem;
+}
+
+nav ul {
+ list-style: none;
+ padding: 0;
+ margin: 0;
+ display: flex;
+ align-items: center;
+}
+
+nav li {
+  margin-left: 2rem;
+  
+}
+
+nav a {
+    background-color: var(--nav-bg);
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    font-size: 16px;
+    transition: color 0.3s ease;
+    padding: 8px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: 'alef-bold';
+}
+
+nav a:hover {
+  background-color: var(--link-hover-color);
+}
+
+#logout-form button {
+  background-color: var(--nav-bg);
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 500;
+  font-size: 16px;
+  transition: color 0.3s ease;
+  padding: 8px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  font-family: 'alef-bold';
+}
+
+#logout-form button:hover {
+  background-color: var(--link-hover-color);
+}
+
+
+main {
+  width: 100%;
+  max-width: 1200px;
+  padding: 2rem;
+  flex: 1;
+}
+
+
