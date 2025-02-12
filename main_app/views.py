@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -12,11 +12,25 @@ from .forms import HiddenGemForm, CustomUser
 class HiddenGemCreate(LoginRequiredMixin, CreateView):
     model = HiddenGem
     form_class = HiddenGemForm
+    successful_url='/hiddengem/'
 
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
+
+
         
+class HiddenGemUpdate(LoginRequiredMixin, CreateView):
+    model= HiddenGem
+    fields = ['title', 'description']
+    successful_url='/hiddengem/'
+
+
+
+class HiddenGemDelete(LoginRequiredMixin, CreateView):
+    model = HiddenGem
+    successful_url='/hiddengem/'
+
 
 class Login(LoginView):
     template_name = 'registration/login.html'
