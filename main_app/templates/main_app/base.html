@@ -23,6 +23,7 @@
                 {% if user.is_authenticated %}
                 <li><a href="{% url 'userhome' %}">Home</a></li>
                 <li><a href="{% url 'hiddengem-create' %}">New Hidden Gem</a></li>
+                <li><a href="{% url 'hiddengem-index' %}">All Hidden Gems</a></li>
                 <li>
                     <form id="logout-form" method="post" action="{% url 'logout' %}">
                         {% csrf_token %}
@@ -32,6 +33,7 @@
                 {% else %}
                 <li><a href="{% url 'login' %}">Login</a></li>
                 <li><a href="{% url 'signup' %}">Sign Up</a></li>
+                <li><a href="{% url 'hiddengem-index' %}">All Hidden Gems</a></li>
                 {% endif %}
             </ul>
         </nav>

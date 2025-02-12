@@ -1,0 +1,39 @@
+{% extends 'main_app/base.html' %}
+{% load static %} 
+{% block head %}
+<link rel="stylesheet" href="  "/>
+{% endblock %} 
+
+
+
+{% block content %}
+<section class="page-header">
+  <h1>All Hidden Gems</h1>
+
+</section>
+
+<section class="hiddengem-container">
+    
+    {% for hiddengem in hiddengems %}
+      <div class="card">
+        <a href="/hiddengems/{{ hiddengem.id }}">
+    
+          <div class="card-content">
+            <div class="card-img-container">
+              <img
+                src=" "
+                alt=" "
+              />
+            </div>
+            <h2 class="card-title">{{ hiddengem.title }}</h2>
+            <p>{{ hiddengem.category }}</p>
+            <p>{{ hiddengem.location }}</p>
+            <!-- <p>{{ hiddengem.description }}</p>
+            <p>by: {{ hiddengem.user }}</p> -->
+          </div>
+        </a>
+      </div>
+    {% endfor %}
+  
+</section>
+{% endblock %}
