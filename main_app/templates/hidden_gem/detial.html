@@ -1,0 +1,46 @@
+{% extends 'main_app/base.html' %}
+{% load static %} 
+{% block head %}
+<link rel="stylesheet" href="  "/>
+{% endblock %} 
+
+
+
+{% block content %}
+<section class="page-header">
+  <h1>{{ hiddengem.title }} Details:</h1>
+
+</section>
+
+<section class="hiddengem-container">
+    <div class="card-info">
+        <div class="card-img-container">
+            <img
+            src=" "
+            alt=" "
+            />
+        </div>
+        <h2 class="card-title">{{ hiddengem.title }}</h2>
+        <p>{{ hiddengem.category }}</p>
+        <p>{{ hiddengem.location }}</p>
+        <p>{{ hiddengem.description }}</p>
+        <p>by: {{ hiddengem.user }}</p>
+    </div>
+
+          
+    <div class="card-comment">
+        <h3>Write your comment here:</h3>
+            <form 
+                action="/hiddengems/{{ hiddengem.id }}/comment" 
+                method="post"
+                class="form-contianer">
+            
+                <button type="submit" class="btn submit">Submit!</button>
+            </form>
+        </div>
+    </div>
+
+
+  
+</section>
+{% endblock %}
