@@ -127,7 +127,7 @@ LOGIN_URL = 'userhome'
 
 LOGIN_REDIRECT_URL = 'userhome'
 
-LOGOUT_REDIREECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field

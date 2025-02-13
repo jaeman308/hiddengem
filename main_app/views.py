@@ -34,6 +34,7 @@ class HiddenGemDelete(LoginRequiredMixin, DeleteView):
     model = HiddenGem
     success_url='/hiddengems/'
 
+
 class Login(LoginView):
     template_name = 'registration/login.html'
 
