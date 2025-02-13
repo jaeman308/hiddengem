@@ -32,7 +32,7 @@ class HiddenGem(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('hiddengem-detial', kwargs={'hiddengem_id': self.id})
+        return reverse('hiddengem-detail', kwargs={'hiddengem_id': self.id})
 
     
 

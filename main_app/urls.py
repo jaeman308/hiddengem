@@ -9,4 +9,7 @@ urlpatterns = [
     path('hiddengem/create/', views.HiddenGemCreate.as_view(), name='hiddengem-create'),
     path('hiddengems/', views.hiddengem_index, name='hiddengem-index'),
     path('hiddengems/<int:hiddengem_id>/', views.hiddengem_detail, name='hiddengem-detail'),
+    path('hiddengems/<int:pk>/update/', views.HiddenGemUpdate.as_view(), name='hiddengem-update'),
+    path('hiddengems/<int:pk>/delete/', views.HiddenGemDelete.as_view(), name='hiddengem-delete'),
+    
 ]
