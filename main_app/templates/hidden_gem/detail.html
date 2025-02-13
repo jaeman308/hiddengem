@@ -25,6 +25,12 @@
         <p>{{ hiddengem.location }}</p>
         <p>{{ hiddengem.description }}</p>
         <p>by: {{ hiddengem.user }}</p>
+        <a href="{% url 'hiddengem-update' hiddengem.id %}">
+            <img src="https://i.postimg.cc/nLFJh7p1/4.png" alt="edit button"/>
+        </a>
+        <a href="{% url 'hiddengem-delete' hiddengem.id %}">
+            <img src="https://i.postimg.cc/vmTGv9kZ/5.png" alt="delete button"/>
+        </a>
     </div>
 
           
