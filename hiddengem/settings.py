@@ -125,7 +125,7 @@ STATIC_URL = 'static/'
 
 LOGIN_URL = 'userhome'
 
-LOGIN_REDIRECT_URL = 'hiddengem-index'
+LOGIN_REDIRECT_URL = 'userhome'
 
 LOGOUT_REDIREECT_URL = 'home'
 

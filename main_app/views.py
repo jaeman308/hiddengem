@@ -12,6 +12,7 @@ from .forms import HiddenGemForm, CustomUser
 class HiddenGemCreate(LoginRequiredMixin, CreateView):
     model = HiddenGem
     form_class = HiddenGemForm
+    
 
     def form_valid(self, form):
         form.instance.user = self.request.user
@@ -47,10 +48,11 @@ def signup(request):
     context = {'form': form, 'error_message': error_message}
     return render(request, 'main_app/signup.html', context)
 
+@login_required
 def hiddengem_index(request):
     hiddengems = HiddenGem.objects.all()
     return render(request, 'hidden_gem/index.html', {'hiddengems': hiddengems})
-
+@login_required
 def hiddengem_detial(request, hiddengem_id):
     hiddengem = HiddenGem.objects.get(id=hiddengem_id)
     return render(request, 'hidden_gem/detial.html', {'hiddengem': hiddengem})

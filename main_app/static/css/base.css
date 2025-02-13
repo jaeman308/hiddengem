@@ -164,7 +164,7 @@ main {
 
 
 .btn {
-  background-color: var(--nav-bg);
+   background-color: var(--nav-bg);
   text-decoration: none;
   color: var(--text-color);
   font-weight: 500;
