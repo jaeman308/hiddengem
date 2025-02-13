@@ -4,7 +4,7 @@ from django.contrib.auth.views import LoginView
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from main_app.models import HiddenGem, Activity
-from .forms import HiddenGemForm, CustomUser
+from .forms import HiddenGemForm, CustomUser, HiddenGemCommentForm
 
 
 
@@ -55,6 +55,14 @@ def hiddengem_detial(request, hiddengem_id):
     hiddengem = HiddenGem.objects.get(id=hiddengem_id)
     return render(request, 'hidden_gem/detial.html', {'hiddengem': hiddengem})
 
+@login_required
+def add_comment(request, hiddengem_id):
+    form = HiddenGemCommentForm(request.POST)
+    if form.is_valid():
+        new_comment = form.save(commit=False)
+        new_comment.hiddengem_id = hiddengem_id
+        new_comment.save()
+    return redirect('hiddengem-detial', hiddengem_id=hiddengem_id)
 
 
 
