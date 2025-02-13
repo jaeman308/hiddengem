@@ -3,7 +3,8 @@ from django.views.generic.edit import CreateView
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from main_app.models import HiddenGem, Activity
+from main_app.models import HiddenGem, Activity, User
+from django.contrib.auth import login
 from .forms import HiddenGemForm, CustomUser
 
 
@@ -12,7 +13,7 @@ from .forms import HiddenGemForm, CustomUser
 class HiddenGemCreate(LoginRequiredMixin, CreateView):
     model = HiddenGem
     form_class = HiddenGemForm
-    
+
 
     def form_valid(self, form):
         form.instance.user = self.request.user
@@ -30,7 +31,7 @@ def home(request):
 
 @login_required
 def userhome(request):
-    return render(request, 'main_app/user_home.html')
+    return render(request, 'main_app/user_home.html', {'user': request.user})
 
 
 def signup(request): 
@@ -44,7 +45,7 @@ def signup(request):
         else:
             error_message = 'Invalid sign up - try agian'
     else: 
-        form = CustomUser
+        form = CustomUser()
     context = {'form': form, 'error_message': error_message}
     return render(request, 'main_app/signup.html', context)
 
@@ -52,8 +53,10 @@ def signup(request):
 def hiddengem_index(request):
     hiddengems = HiddenGem.objects.all()
     return render(request, 'hidden_gem/index.html', {'hiddengems': hiddengems})
+
+
 @login_required
-def hiddengem_detial(request, hiddengem_id):
+def hiddengem_detail(request, hiddengem_id):
     hiddengem = HiddenGem.objects.get(id=hiddengem_id)
     return render(request, 'hidden_gem/detial.html', {'hiddengem': hiddengem})
 

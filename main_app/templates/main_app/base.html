@@ -21,7 +21,7 @@
         <nav>
             <ul>
                 {% if user.is_authenticated %}
-                <li><a href="{% url 'userhome' %}">Home</a></li>
+                <li><a href="{% url 'userhome' %}">Profile</a></li>
                 <li><a href="{% url 'hiddengem-create' %}">New Hidden Gem</a></li>
                 <li><a href="{% url 'hiddengem-index' %}">All Hidden Gems</a></li>
                 <li>

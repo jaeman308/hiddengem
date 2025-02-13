@@ -8,5 +8,5 @@ urlpatterns = [
     path('accounts/signup/', views.signup, name='signup'),
     path('hiddengem/create/', views.HiddenGemCreate.as_view(), name='hiddengem-create'),
     path('hiddengems/', views.hiddengem_index, name='hiddengem-index'),
-    path('hiddengems/<int:hiddengem_id>/', views.hiddengem_detial, name='hiddengem-detial'),
+    path('hiddengems/<int:hiddengem_id>/', views.hiddengem_detail, name='hiddengem-detail'),
 ]
