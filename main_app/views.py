@@ -3,9 +3,9 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from main_app.models import HiddenGem, Activity, User
+from main_app.models import HiddenGem, Activity, User, Comment
 from django.contrib.auth import login
-from .forms import HiddenGemForm, CustomUser
+from .forms import HiddenGemForm, CustomUser, HiddenGemCommentForm
 
 
 
@@ -37,6 +37,13 @@ class HiddenGemDelete(LoginRequiredMixin, DeleteView):
 
 class Login(LoginView):
     template_name = 'registration/login.html'
+
+
+class HiddengemCommentCreate(LoginRequiredMixin, CreateView):
+    model = Comment
+    form_class = HiddenGemCommentForm
+    template_name= "hidden_gem/hiddengemComment_form.html"
+    success_url = '/hiddengems/<int:hiddengem_id>/'
 
 
 
@@ -74,7 +81,6 @@ def hiddengem_index(request):
 def hiddengem_detail(request, hiddengem_id):
     hiddengem = HiddenGem.objects.get(id=hiddengem_id)
     return render(request, 'hidden_gem/detail.html', {'hiddengem': hiddengem})
-
 
 
 

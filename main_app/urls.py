@@ -12,4 +12,5 @@ urlpatterns = [
     path('hiddengems/<int:pk>/update/', views.HiddenGemUpdate.as_view(), name='hiddengem-update'),
     path('hiddengems/<int:pk>/delete/', views.HiddenGemDelete.as_view(), name='hiddengem-delete'),
     
+    path('hiddengems/<int:hiddengem_id>/add-comment/', views.HiddengemCommentCreate.as_view(), name='add-comment'),
 ]
