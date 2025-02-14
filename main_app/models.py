@@ -34,7 +34,7 @@ class HiddenGem(models.Model):
     def get_absolute_url(self):
         return reverse('hiddengem-detail', kwargs={'hiddengem_id': self.id})
 
-# add commen model below
+
 class Comment(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     hiddengem = models.ForeignKey(HiddenGem, on_delete=models.CASCADE)

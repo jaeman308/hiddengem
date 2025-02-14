@@ -43,7 +43,7 @@ class HiddengemCommentCreate(LoginRequiredMixin, CreateView):
     model = Comment
     form_class = HiddenGemCommentForm
     template_name= "hidden_gem/hiddengemComment_form.html"
-    success_url = '/hiddengems/<int:hiddengem_id>/'
+
 
 
 
