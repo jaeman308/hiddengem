@@ -34,8 +34,9 @@
             {% else %}
             <img src="https://i.postimg.cc/q7TxZzYf/Untitled-design-14.png" alt="museum art work"/>
             {% endif %}
-
         </div>
+
+
         <h2 class="card-title">{{ hiddengem.title }}</h2>
         <p>{{ hiddengem.category }}</p>
         <p>{{ hiddengem.location }}</p>
@@ -47,11 +48,20 @@
         <a href="{% url 'hiddengem-delete' hiddengem.id %}">
             <img src="https://i.postimg.cc/vmTGv9kZ/5.png" alt="delete button"/>
         </a>
+
     </div>
 
           
-    <div class="card-comment">
-    <ul><a href="/hiddengems/{{ hiddengem.id }}/add-comment/">Add Comment</a></ul> 
+    <div class="comments-container">
+        {% for comment in comments %}
+        <div>
+            <p>{{ comment.commenttext }} </p>
+            <p>by: {{ comment.author }}</p>
+            <br>
+        </div>
+        {% endfor %}
+
+        <ul><a href="/hiddengems/{{ hiddengem.id }}/add-comment/">Add Comment</a></ul> 
     </div>
 
 
