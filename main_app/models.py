@@ -34,10 +34,18 @@ class HiddenGem(models.Model):
     def get_absolute_url(self):
         return reverse('hiddengem-detail', kwargs={'hiddengem_id': self.id})
 
-    
+# add commen model below
+class Comment(models.Model):
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    hiddengem = models.ForeignKey(HiddenGem, on_delete=models.CASCADE)
+    commenttext = models.TextField(max_length=255) 
+
+    def __str__(self):
+        return self.commenttext  
+
 
 class Activity(models.Model):
-    comment = models.TextField()
+    comment = models.ForeignKey(Comment, on_delete=models.CASCADE)
     like = models.IntegerField(default=0)
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
