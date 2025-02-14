@@ -3,7 +3,9 @@ from .import views
 
 urlpatterns = [
     path('', views.home, name='home'),
+
     path('userhome/', views.userhome, name='userhome'),
+
     path('login/', views.Login.as_view(), name='login'),
     path('accounts/signup/', views.signup, name='signup'),
     path('hiddengem/create/', views.HiddenGemCreate.as_view(), name='hiddengem-create'),
@@ -13,4 +15,5 @@ urlpatterns = [
     path('hiddengems/<int:pk>/delete/', views.HiddenGemDelete.as_view(), name='hiddengem-delete'),
     
     path('hiddengems/<int:hiddengem_id>/add-comment/', views.HiddengemCommentCreate.as_view(), name='add-comment'),
+
 ]

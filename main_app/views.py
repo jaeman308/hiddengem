@@ -68,7 +68,9 @@ def home(request):
 
 @login_required
 def userhome(request):
-    return render(request, 'main_app/user_home.html', {'user': request.user})
+    user = request.user
+    hiddengems = HiddenGem.objects.filter(user=user)
+    return render(request, 'main_app/user_home.html', {'user': user, "hiddengems": hiddengems })
 
 
 def signup(request): 
