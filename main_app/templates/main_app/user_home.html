@@ -8,7 +8,7 @@
 <section class="logo-container">
     <div class="home-conatiner"> <!-- this is just a place holder until we can style the page and get a better naming for the container-->
         <div class="content-container">
-            <h1>Welcome to your homepage {{ user.username|upper }} !</h1>
+            <h1>Welcome {{ user.username|upper }} !</h1>
             <h2>Your hidden gems:</h2>
 
             {% for hiddengem in hiddengems %}
