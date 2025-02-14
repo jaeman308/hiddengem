@@ -95,7 +95,8 @@ def hiddengem_index(request):
 @login_required
 def hiddengem_detail(request, hiddengem_id):
     hiddengem = HiddenGem.objects.get(id=hiddengem_id)
-    return render(request, 'hidden_gem/detail.html', {'hiddengem': hiddengem})
+    comments = Comment.objects.filter(hiddengem=hiddengem)
+    return render(request, 'hidden_gem/detail.html', {'hiddengem': hiddengem, "comments": comments})
 
 
 
