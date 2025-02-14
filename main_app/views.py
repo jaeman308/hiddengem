@@ -43,7 +43,22 @@ class HiddengemCommentCreate(LoginRequiredMixin, CreateView):
     model = Comment
     form_class = HiddenGemCommentForm
     template_name= "hidden_gem/hiddengemComment_form.html"
-    success_url = '/hiddengems/<int:hiddengem_id>/'
+    # success_url = '/hiddengems/<int:hiddengem_id>/'
+    def form_invalid(self, form):
+        print(form)
+
+    def form_valid(self, form):
+        comment = form.save(commit=False)
+        print(comment)
+
+        hiddengem_id = self.kwargs.get("hiddengem_id")
+        hiddengem = HiddenGem.objects.get(pk=hiddengem_id)
+        print(hiddengem)
+
+        comment.hiddengem = hiddengem
+        comment.save()
+
+        return super().form_valid(form)
 
 
 

@@ -42,6 +42,9 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.commenttext  
+    
+    def get_absolute_url(self):
+        return reverse('hiddengem-detail', kwargs={'hiddengem_id': self.hiddengem.id})
 
 
 class Activity(models.Model):
