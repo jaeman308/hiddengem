@@ -48,12 +48,11 @@ class Comment(models.Model):
 
 
 class Activity(models.Model):
-    comment = models.ForeignKey(Comment, on_delete=models.CASCADE)
     like = models.IntegerField(default=0)
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     hiddengem = models.ForeignKey(HiddenGem, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"Comment by {self.user.username} on {self.hiddengem.title}"
+        return f"Activity by {self.user.username} on {self.hiddengem.title}"
 

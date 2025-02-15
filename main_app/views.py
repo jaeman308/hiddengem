@@ -140,3 +140,15 @@ def hiddengem_detail(request, hiddengem_id):
     comments = Comment.objects.filter(hiddengem=hiddengem)
     return render(request, 'hidden_gem/detail.html', {'hiddengem': hiddengem, "comments": comments})
 
+@login_required
+def like_hiddengem(request, hiddengem_id):
+    hiddengem = HiddenGem.objects.get(id=hiddengem_id)
+
+    existing_activity = Activity.objects.filter(hiddengem=hiddengem, user=request.user).first()
+
+    if existing_activity:
+        return redirect('hiddengem-detail', hiddengem_id=hiddengem.id)
+
+    Activity.objects.create(hiddengem=hiddengem, user=request.user)
+
+    return redirect('hiddengem-detail', hiddengem_id=hiddengem.id)

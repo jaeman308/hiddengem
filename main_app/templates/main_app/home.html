@@ -6,9 +6,9 @@
 
 {% block content %}
 {% if user.is_authenticated %}
-<section class="logo-container">
-    <div class="home-conatiner"> <!-- this is just a place holder until we can style the page and get a better naming for the container-->
-        <div class="content-container">
+<section class="logo-container authenticated">
+    <div class="home-conatiner authenticated"> <!-- this is just a place holder until we can style the page and get a better naming for the container-->
+        <div class="content-container authenticated-content">
             <h1>Welcome {{ user.username|upper }} !</h1>
             <h2>Your hidden gems:</h2>
 
@@ -20,7 +20,7 @@
             {% for hiddengem in filter.qs %}
                 
                 <div>
-                    <h3>{{ hiddengem.title }}</h3>
+                    <h3><a href="/hiddengems/{{ hiddengem.id }}">{{ hiddengem.title }}</a></h3>
                     <p>{{ hiddengem.category }}</p>
                     <p>{{ hiddengem.location }}</p>
                     <p>{{ hiddengem.description }}</p>
@@ -38,9 +38,9 @@
 
 {% else %}
 
-<section class="logo-container">
-    <div class="home-conatiner"> <!-- this is just a place holder until we can style the page and get a better naming for the container-->
-        <div class="content-container">
+<section class="logo-container unauthenticated">
+    <div class="home-conatiner unauthenticated"> <!-- this is just a place holder until we can style the page and get a better naming for the container-->
+        <div class="content-container unauthenticated">
             <h1>HIDDENGEM</h1>
             <h3>Local Gems, Purely Authentic Finds.</h3>
             <a href="{% url 'signup' %}" class="btn">JOIN NOW</a>

@@ -37,18 +37,23 @@
         </div>
 
 
-        <h2 class="card-title">{{ hiddengem.title }}</h2>
+        <h2 class="card-title">{{ hiddengem.title }}</h2> 
+        <a href="{% url 'hiddengem-like' hiddengem.id %}">
+            <img src="https://i.postimg.cc/HsKdFzqp/Untitled-design-18.png" alt="like button">
+        </a>
+        <p>Likes: {{ hiddengem.activity_set.all|length }}</p>
         <p>{{ hiddengem.category }}</p>
         <p>{{ hiddengem.location }}</p>
         <p>{{ hiddengem.description }}</p>
         <p>by: {{ hiddengem.user }}</p>
+        {% if hiddengem.user == user %}
         <a href="{% url 'hiddengem-update' hiddengem.id %}">
             <img src="https://i.postimg.cc/nLFJh7p1/4.png" alt="edit button"/>
         </a>
         <a href="{% url 'hiddengem-delete' hiddengem.id %}">
             <img src="https://i.postimg.cc/vmTGv9kZ/5.png" alt="delete button"/>
         </a>
-
+        {% endif %}
     </div>
 
           
@@ -59,13 +64,14 @@
             <p>by: {{ comment.author }}</p>
             <br>
         </div>
+        {% if hiddengem.user == user %}
         <a href="{% url 'comment-update' hiddengem.id comment.id %}">
             <img src="https://i.postimg.cc/nLFJh7p1/4.png" alt="edit button"/>
         </a>
         <a href="{% url 'comment-delete' hiddengem.id comment.id %}">
             <img src="https://i.postimg.cc/vmTGv9kZ/5.png" alt="delete button"/>
         </a>
-        
+        {% endif %}
         {% endfor %}
 
         <ul><a class="a_btn" href="/hiddengems/{{ hiddengem.id }}/add-comment/">Add Comment</a></ul> 
