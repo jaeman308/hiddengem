@@ -9,12 +9,17 @@
 {% block content %}
 <section class="page-header">
   <h1>All Hidden Gems</h1>
-
 </section>
 
+
+
 <section class="hiddengem-container">
+  <form method="get">
+    {{ filter.form.as_p }}
+    <button type="submit">Search</button>
+  </form>
     
-    {% for hiddengem in hiddengems %}
+    {% for hiddengem in filter.qs %}
       <div class="card">
         <a href="/hiddengems/{{ hiddengem.id }}">
     
