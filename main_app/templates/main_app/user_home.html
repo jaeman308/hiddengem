@@ -8,8 +8,26 @@
 <section class="logo-container">
     <div class="home-conatiner"> <!-- this is just a place holder until we can style the page and get a better naming for the container-->
         <div class="content-container">
-            <h1>WELCOME {{ user.first_name|upper }} </h1>
-            <h3></h3>
+            <h1>Welcome {{ user.username|upper }} !</h1>
+            <h2>Your hidden gems:</h2>
+
+            <form method="get">
+                {{ filter.form.as_p }}
+                <button type="submit">Search</button>
+            </form>
+
+            {% for hiddengem in filter.qs %}
+                
+                <div>
+                    <h3>{{ hiddengem.title }}</h3>
+                    <p>{{ hiddengem.category }}</p>
+                    <p>{{ hiddengem.location }}</p>
+                    <p>{{ hiddengem.description }}</p>
+                </div>
+                
+            {% endfor %}
+
+            
         </div>
 
     </div>
