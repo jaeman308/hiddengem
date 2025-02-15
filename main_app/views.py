@@ -98,8 +98,12 @@ class HiddengemCommentCreate(LoginRequiredMixin, CreateView):
 
         return super().form_valid(form)
 
-
 def home(request):
+    if request.user.is_authenticated:
+        user = request.user 
+        hiddengems = HiddenGem.objects.filter(user=user)
+        hiddengem_filter = UserHiddenGemFilter(request.GET, queryset=hiddengems, user=user)
+        return render(request, 'main_app/home.html',  {'user': user, "hiddengems": hiddengems, 'filter': hiddengem_filter})
     return render(request, 'main_app/home.html')
 
 

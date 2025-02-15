@@ -14,7 +14,7 @@
 
             <form method="get">
                 {{ filter.form.as_p }}
-                <button type="submit">Search</button>
+                <button class="btn" type="submit">Search</button>
             </form>
 
             {% for hiddengem in filter.qs %}
@@ -25,6 +25,8 @@
                     <p>{{ hiddengem.location }}</p>
                     <p>{{ hiddengem.description }}</p>
                 </div>
+            {% empty %}
+                <p> No Hidden Gems Found!</p>
                 
             {% endfor %}
 

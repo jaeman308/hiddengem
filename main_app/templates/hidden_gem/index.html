@@ -16,7 +16,7 @@
 <section class="hiddengem-container">
   <form method="get">
     {{ filter.form.as_p }}
-    <button type="submit">Search</button>
+    <button class="btn" type="submit">Search</button>
   </form>
     
     {% for hiddengem in filter.qs %}
@@ -49,8 +49,6 @@
             <h2 class="card-title">{{ hiddengem.title }}</h2>
             <p>{{ hiddengem.category }}</p>
             <p>{{ hiddengem.location }}</p>
-            <!-- <p>{{ hiddengem.description }}</p>
-            <p>by: {{ hiddengem.user }}</p> -->
           </div>
         </a>
       </div>
