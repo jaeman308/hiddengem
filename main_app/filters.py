@@ -5,4 +5,9 @@ from .models import HiddenGem
 class HiddenGemFilter(django_filters.FilterSet):
     class Meta:
         model = HiddenGem
-        fields = ["title",'category', "user"] 
+        fields = ['category', "user"] 
+
+class UserHiddenGemFilter(django_filters.FilterSet):
+    class Meta:
+        model = HiddenGem
+        fields = ['category', "title"] 
