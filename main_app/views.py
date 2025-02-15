@@ -6,7 +6,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from main_app.models import HiddenGem, Activity, User, Comment
 from django.contrib.auth import login
 from .forms import HiddenGemForm, CustomUser, HiddenGemCommentForm
-from .filters import HiddenGemFilter
+from .filters import HiddenGemFilter, UserHiddenGemFilter
 
 
 
@@ -71,7 +71,8 @@ def home(request):
 def userhome(request):
     user = request.user
     hiddengems = HiddenGem.objects.filter(user=user)
-    return render(request, 'main_app/user_home.html', {'user': user, "hiddengems": hiddengems })
+    hiddengem_filter = UserHiddenGemFilter(request.GET, queryset=hiddengems)
+    return render(request, 'main_app/user_home.html', {'user': user, "hiddengems": hiddengems, 'filter': hiddengem_filter })
 
 
 def signup(request): 

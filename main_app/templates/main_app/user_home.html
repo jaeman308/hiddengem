@@ -11,7 +11,12 @@
             <h1>Welcome {{ user.username|upper }} !</h1>
             <h2>Your hidden gems:</h2>
 
-            {% for hiddengem in hiddengems %}
+            <form method="get">
+                {{ filter.form.as_p }}
+                <button type="submit">Search</button>
+            </form>
+
+            {% for hiddengem in filter.qs %}
                 
                 <div>
                     <h3>{{ hiddengem.title }}</h3>
