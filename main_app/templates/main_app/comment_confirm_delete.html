@@ -8,16 +8,22 @@
 <div class="page-body">
 <div class="page-header">
 <img src="https://i.postimg.cc/nLFJh7p1/4.png" alt="location and map"/>
-<h1>Delete Hidden Gem</h1>
+<h1>Delete Hidden Gem Comment</h1>
 </div>
 
-<h2>Are you sure you woould like to delete {{ hiddengem.title }}</h2>
+<h2>Are you sure you woould like to delete this comment</h2>
 
-<form action="" method="post" class="form">
+<div class="comment-container">
+    <p>{{ object.comment }}</p>
+    <p>by: {{ object.author }}</p>
+</div>
+
+
+<form method="post">
     {% csrf_token%}
     <button type="submit" class="btn danger">Delete</button>
-    <a href="{% url 'hiddengem-detail' hiddengem.id %}" class="'btn secondary">Cancel</a>
 </form>
+<a href="{% url 'hiddengem-detail' object.hiddengem.id %}" class="'btn secondary">Cancel</a>
 </div> 
 
 

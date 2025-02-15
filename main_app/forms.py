@@ -22,4 +22,4 @@ class CustomUser(UserCreationForm):
 class HiddenGemCommentForm(forms.ModelForm):
     class Meta:
         model = Comment
-        fields = ["author", "commenttext"]
+        fields = ["comment"]

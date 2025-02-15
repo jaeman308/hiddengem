@@ -55,10 +55,17 @@
     <div class="comments-container">
         {% for comment in comments %}
         <div>
-            <p>{{ comment.commenttext }} </p>
+            <p>{{ comment.comment }} </p>
             <p>by: {{ comment.author }}</p>
             <br>
         </div>
+        <a href="{% url 'comment-update' hiddengem.id comment.id %}">
+            <img src="https://i.postimg.cc/nLFJh7p1/4.png" alt="edit button"/>
+        </a>
+        <a href="{% url 'comment-delete' hiddengem.id comment.id %}">
+            <img src="https://i.postimg.cc/vmTGv9kZ/5.png" alt="delete button"/>
+        </a>
+        
         {% endfor %}
 
         <ul><a href="/hiddengems/{{ hiddengem.id }}/add-comment/">Add Comment</a></ul> 
