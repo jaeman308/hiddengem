@@ -6,6 +6,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from main_app.models import HiddenGem, Activity, User, Comment
 from django.contrib.auth import login
 from .forms import HiddenGemForm, CustomUser, HiddenGemCommentForm
+from .filters import HiddenGemFilter
 
 
 
@@ -91,7 +92,8 @@ def signup(request):
 @login_required
 def hiddengem_index(request):
     hiddengems = HiddenGem.objects.all()
-    return render(request, 'hidden_gem/index.html', {'hiddengems': hiddengems})
+    hiddengem_filter = HiddenGemFilter(request.GET, queryset=hiddengems)
+    return render(request, 'hidden_gem/index.html', {'hiddengems': hiddengems, 'filter': hiddengem_filter})
 
 
 @login_required
@@ -99,8 +101,4 @@ def hiddengem_detail(request, hiddengem_id):
     hiddengem = HiddenGem.objects.get(id=hiddengem_id)
     comments = Comment.objects.filter(hiddengem=hiddengem)
     return render(request, 'hidden_gem/detail.html', {'hiddengem': hiddengem, "comments": comments})
-
-
-
-    
 
