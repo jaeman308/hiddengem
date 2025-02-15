@@ -12,9 +12,9 @@
 </div>
 <form action="" method="post" class="form-contianer">
     {% csrf_token %}
-    <table>
-        {{ form.as_table}}
-    </table>
+    
+    {{ form.as_p}}
+
     <button type="submit" class="btn">Submit Comment</button>
 </form>
 </div>

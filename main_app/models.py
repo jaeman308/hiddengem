@@ -38,10 +38,10 @@ class HiddenGem(models.Model):
 class Comment(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     hiddengem = models.ForeignKey(HiddenGem, on_delete=models.CASCADE)
-    commenttext = models.TextField(max_length=255) 
+    comment = models.TextField(max_length=255) 
 
     def __str__(self):
-        return self.commenttext  
+        return self.comment
     
     def get_absolute_url(self):
         return reverse('hiddengem-detail', kwargs={'hiddengem_id': self.hiddengem.id})
