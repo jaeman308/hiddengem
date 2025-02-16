@@ -14,4 +14,5 @@ urlpatterns = [
     path('hiddengems/<int:hiddengem_id>/comments/<int:comment_id>/delete/', views.CommentDelete.as_view(), name='comment-delete'),
     path('hiddengems/<int:hiddengem_id>/add-comment/', views.HiddengemCommentCreate.as_view(), name='add-comment'),
     path('hiddengems/<int:hiddengem_id>/like/', views.like_hiddengem, name='hiddengem-like'),
+      path('hiddengems/<int:hiddengem_id>/comments/<int:comment_id>/like/', views.like_comment, name='comment-like'),
 ]

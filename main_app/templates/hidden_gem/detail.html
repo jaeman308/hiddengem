@@ -64,6 +64,10 @@
             <p>by: {{ comment.author }}</p>
             <br>
         </div>
+        <a href="{% url 'comment-like' hiddengem.id comment.id %}">
+            <img src="https://i.postimg.cc/HsKdFzqp/Untitled-design-18.png" alt="like button">
+        </a>
+        <p>Likes: {{ comment.activity_set.all|length }}</p>
         {% if hiddengem.user == user %}
         <a href="{% url 'comment-update' hiddengem.id comment.id %}">
             <img src="https://i.postimg.cc/nLFJh7p1/4.png" alt="edit button"/>

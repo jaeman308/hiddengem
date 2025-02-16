@@ -48,6 +48,7 @@ class Comment(models.Model):
 
 
 class Activity(models.Model):
+    comment = models.ForeignKey('Comment', on_delete=models.CASCADE)
     like = models.IntegerField(default=0)
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
