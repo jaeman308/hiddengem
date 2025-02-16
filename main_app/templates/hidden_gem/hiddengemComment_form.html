@@ -1,23 +1,30 @@
 {% extends 'main_app/base.html' %}
 {% load static %}
+
 {% block head%}
     <link rel="stylesheet" href="{% static 'css/form.css' %}">
 {% endblock %}
 
 {% block content %}
-<div class="page-body">
-<div class="page-header">
-<img src=" " alt=" "/>
-<h1>Add Comment</h1>
-</div>
-<form action="" method="post" class="form-contianer">
-    {% csrf_token %}
-    
-    {{ form.as_p}}
-
-    <button type="submit" class="btn">Submit Comment</button>
-</form>
-</div>
+<main> 
+    <div class="page-body">
+        <div class="page-header">
+            <img class="comment_img" src="https://i.postimg.cc/7hnDnHQb/Untitled-design-19.png" alt="comment logo"/>
+            <h1>Add Comment On {{ hiddengem.title|capfirst }}</h1>
+         </div>
+        <div class="form-container">
+            <div class="comment_form">
+                <form action="" method="post">
+                    {% csrf_token %}            
+                    {{ form.as_p}}
+                    <div class="button-container">
+                        <button type="submit" class="btn">Submit Comment</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
 
 
 {% endblock %} 

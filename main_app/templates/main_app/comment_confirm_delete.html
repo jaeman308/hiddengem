@@ -1,17 +1,18 @@
 {% extends 'main_app/base.html' %}
 {% load static %}
 {% block head%}
-    <link rel="stylesheet" href="{% static 'css/form.css' %}">
+    <link rel="stylesheet" href="{% static 'css/delete_template.css' %}">
 {% endblock %}
 
 {% block content %}
 <div class="page-body">
 <div class="page-header">
-<img src="https://i.postimg.cc/nLFJh7p1/4.png" alt="location and map"/>
+<img src="https://i.postimg.cc/vmTGv9kZ/5.png" alt="location and map"/>
 <h1>Delete Hidden Gem Comment</h1>
 </div>
+<div class="'content">
 
-<h2>Are you sure you woould like to delete this comment</h2>
+<h2>Are you sure you woould like to delete this comment?</h2>
 
 <div class="comment-container">
     <p>{{ object.comment }}</p>
@@ -22,8 +23,10 @@
 <form method="post">
     {% csrf_token%}
     <button type="submit" class="btn danger">Delete</button>
+    <a href="{% url 'hiddengem-detail' object.hiddengem.id %}" class="a_btn">Cancel</a>
 </form>
-<a href="{% url 'hiddengem-detail' object.hiddengem.id %}" class="'btn secondary">Cancel</a>
+
+</div>
 </div> 
 
 

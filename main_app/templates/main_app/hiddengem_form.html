@@ -5,19 +5,25 @@
 {% endblock %}
 
 {% block content %}
-<div class="page-body">
-<div class="page-header">
-<img src="https://i.postimg.cc/NjdggYWk/Untitled-design-13.png" alt="location and map"/>
-<h1>New Gem</h1>
-</div>
-<form action="" method="post" class="form-contianer">
-    {% csrf_token %}
-    <table>
-        {{ form.as_table}}
-    </table>
-    <button type="submit" class="btn">Post Hidden Gem</button>
-</form>
-</div>
+<main>
+    <div class="page-body">
+        <div class="page-header">
+            <img src="https://i.postimg.cc/NjdggYWk/Untitled-design-13.png" alt="location and map"/>
+            <h1>New Gem</h1>
+        </div>
+        <div class="form-contianer">
+            <form action="" method="post">
+                {% csrf_token %}
+                <table>
+                    {{ form.as_table}}
+                </table>
+                <div class="button-container">
+                    <button type="submit" class="btn">Post Hidden Gem</button>
+                </div>
+                </form>
+        </div>
+    </div>
+</main>
 
 
 {% endblock %} 

@@ -1,3 +1,8 @@
+main {
+    margin: 40px;
+    padding: 20px;
+}
+
 .page-body {
     display: flex;
     flex-wrap: wrap;
@@ -6,10 +11,10 @@
 
 }
 .page-header img {
-    width:  50px;
+    width:  80px;
     height: auto;
-
 }
+
 
 .page-header {
     display: flex;
@@ -19,9 +24,15 @@
 
 .form-container {
     display: flex;
-    align-items: center;
     flex-direction: column;
+    justify-content: space-between;
     width: 80%;
+    max-height: calc(100vh - 80px);
+    overflow: hidden;
+}
+
+.form-content {
+    width: 70%;
 }
 
 table {
@@ -53,7 +64,48 @@ td > textarea {
     font-family: inherit;
 }
 
+.button-container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 40px;
+}
+
 .btn {
-    align-self: flex-end;
-    margin-right: 40px;
+    margin-top: 20px;
+}
+
+.comment_form p {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-bottom: 15px;
+    font-size: 25px;
+}
+
+.comment_form label {
+    width: 30%;
+    text-align: left;
+    margin-right: 10px;
+}
+
+.comment_form input,
+.comment_form textarea {
+    width: 70%;
+    font-size: var(--font-reg);
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-left: 10px;
+}
+.commnet_form textarea {
+    height: 60px;
+    max-height: 150px;
+    resize: vertical;
+    font-family: inherit;
+}
+
+.comment_img {
+    width:  160px;
+    height: auto;
+    
 }

@@ -1,14 +1,15 @@
 {% extends 'main_app/base.html' %}
-
+{% load static %}
 {% block head %}
-<!-- css link will go here once we start getting it styled -->
+<link rel="stylesheet" href="{%static 'css/home.css' %}"/>
 {% endblock %}
 
 {% block content %}
 {% if user.is_authenticated %}
-<section class="logo-container authenticated">
-    <div class="home-conatiner authenticated"> <!-- this is just a place holder until we can style the page and get a better naming for the container-->
-        <div class="content-container authenticated-content">
+<main>
+<section class="logo_container_authenticated">
+    <div class="home_conatiner_authenticated"> 
+        <div class="content_container_authenticated">
             <h1>Welcome {{ user.username|upper }} !</h1>
             <h2>Your hidden gems:</h2>
 
@@ -38,18 +39,20 @@
 
 {% else %}
 
-<section class="logo-container unauthenticated">
-    <div class="home-conatiner unauthenticated"> <!-- this is just a place holder until we can style the page and get a better naming for the container-->
-        <div class="content-container unauthenticated">
+<div class="home_conatiner_unauthenticated"> 
+<section class="logo_container_unauthenticated">
+        <div class="content_container_unauthenticated">
             <h1>HIDDENGEM</h1>
             <h3>Local Gems, Purely Authentic Finds.</h3>
-            <a href="{% url 'signup' %}" class="btn">JOIN NOW</a>
+            <a href="{% url 'signup' %}" class="a_btn">JOIN NOW</a>
             
         </div>
         <div class="header_image">
-        <img src="https://i.postimg.cc/J0W0kr3R/Untitled-design-16.png" alt="home logo image"/>
-        </div>
+        <img class="homeimg" src="https://i.postimg.cc/3rGwwpYr/Untitled-design-20.png" alt="home logo image"/>
     </div>
 </section>
+</div>
+
+</main>
 {% endif %}
 {% endblock %}
