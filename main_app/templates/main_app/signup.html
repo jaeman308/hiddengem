@@ -2,24 +2,26 @@
 {% load static %}
 
 {% block head%}
-<link rel="stylesheet" href="'{%static 'css/form.css' %}"/>
+<link rel="stylesheet" href="{% static 'css/signup.css' %}"/>
 {% endblock %}
 
 {% block content %}
-<div class="'page-header">
-    <h1>Sign Up</h1>
-    <img src="https://i.postimg.cc/Kc5YmGv1/1.png" alt="location bubble"/>
-</div>
-{%  if error_message %}
-<P class="red-text">{{ error_message }}</P>
-{% endif%}
-
-<form action="" method="post" class="form-container" autocomplete="off">
-    {% csrf_token %}
-    <table>
-        {{ form.as_p }}
-    </table>
-    <button type="submit" class="btn submit">Submit</button>
-</form>
-
+<main class="signupmain">
+    <div class="page_content">
+        <div class="form_container">
+            <h1>Sign Up</h1>
+            {%  if error_message %}
+            <P class="red-text">{{ error_message }}</P>
+            {% endif%}
+            <form action="" method="post" class="form-container" autocomplete="off">
+                {% csrf_token %}
+                <table>
+                    {{ form.as_p }}
+               </table>
+               <button type="submit" class="btn submit">Submit</button>
+           </form>
+        </div>
+        <img src="https://i.postimg.cc/RCk5gfvn/Untitled-design-22.png" alt="location bubble"/>
+    </div>
+</main>
 {% endblock %}
