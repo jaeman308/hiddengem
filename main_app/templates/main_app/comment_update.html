@@ -8,14 +8,14 @@
 <div class="page-body">
 <div class="page-header">
 <img src="https://i.postimg.cc/nLFJh7p1/4.png" alt="location and map"/>
-<h1>Edit Comment</h1>
+<h1>Edit Your Comment On {{ hiddengem.title|capfirst }}</h1>
 </div>
 <form method="post" class="form-contianer">
     {% csrf_token %}
     {{ form.as_p}}
         <button type="submit" class="btn">Save Changes</button>
+        <a  class="a_btn" href="{% url 'hiddengem-detail' hiddengem.id %}">Cancel</a>
 </form>
-<a class="a_btn" href="{% url 'hiddengem-detail' hiddengem.id %}">Cancel</a>
 </div> 
 
 

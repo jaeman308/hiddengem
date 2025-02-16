@@ -1,29 +1,28 @@
 {% extends 'main_app/base.html' %}
 {% load static %} 
 {% block head %}
-<link rel="stylesheet" href="  "/>
+<link rel="stylesheet" href="{% static 'css/index.css' %}"/>
 {% endblock %} 
 
-
-
 {% block content %}
+<main>
 <section class="page-header">
   <h1>All Hidden Gems</h1>
 </section>
 
-
-
-<section class="hiddengem-container">
+<section class="search-form-container">
   <form method="get">
     {{ filter.form.as_p }}
     <button class="btn" type="submit">Search</button>
   </form>
-    
+</section>
+
+<section class="hiddengem-container">
     {% for hiddengem in filter.qs %}
+    <div class="content_container">
       <div class="card">
         <a href="/hiddengems/{{ hiddengem.id }}">
-    
-          <div class="card-content">
+          <div class="card_content">
             <div class="card-img-container">
               {% if  hiddengem.category == 'Food'%}
               <img src="https://i.postimg.cc/zXVmJXjH/2.png" alt="food art work"/>
@@ -44,13 +43,14 @@
               {% else %}
               <img src="https://i.postimg.cc/q7TxZzYf/Untitled-design-14.png" alt="museum art work"/>
               {% endif%}
-          
             </div>
             <h2 class="card-title">{{ hiddengem.title }}</h2>
           </div>
         </a>
       </div>
+    </div>
     {% endfor %}
   
 </section>
+</main>
 {% endblock %}

@@ -1,87 +1,90 @@
 {% extends 'main_app/base.html' %}
 {% load static %} 
 {% block head %}
-<link rel="stylesheet" href="  "/>
+<link rel="stylesheet" href="{% static 'css/detail.css' %}"/>
 {% endblock %} 
 
 
 
 {% block content %}
+<main>
 <section class="page-header">
   <h1>{{ hiddengem.title|capfirst}} Details:</h1>
-
 </section>
 
 <section class="hiddengem-container">
     <div class="card-info">
-        <div class="card-img-container">
-            {% if  hiddengem.category == 'Food'%}
-            <img src="https://i.postimg.cc/zXVmJXjH/2.png" alt="food art work"/>
-            {% elif hiddengem.category == 'Drink' %}
-            <img src="https://i.postimg.cc/TwY7CCN5/3.png" alt="drink art work"/>
-            {% elif hiddengem.category == 'Park' %}
-            <img src="https://i.postimg.cc/bYH6KG29/3.png" alt="park art work"/>
-            {% elif hiddengem.category == 'Art' %}
-            <img src="https://i.postimg.cc/2yh3KR50/4.png" alt="art art work"/>
-            {% elif hiddengem.category == 'Attractions' %}
-            <img src="https://i.postimg.cc/13pcN2cc/5.png" alt="attraction art work"/>
-            {% elif hiddengem.category == 'Nightlife' %}
-            <img src="https://i.postimg.cc/3JQB12rZ/6.png" alt="nightlife art work"/>
-            {% elif hiddengem.category == 'Music' %}
-            <img src="https://i.postimg.cc/C57zjyLX/7.png" alt="music art work"/>
-            {% elif hiddengem.category == 'Theatre' %}
-            <img src="https://i.postimg.cc/bJb6YgNs/Untitled-design-15.png" alt="theatre art work"/>
-            {% else %}
-            <img src="https://i.postimg.cc/q7TxZzYf/Untitled-design-14.png" alt="museum art work"/>
-            {% endif %}
+        <div class="image-like-container">
+            <div class="card-img-container">
+                {% if  hiddengem.category == 'Food'%}
+                <img src="https://i.postimg.cc/zXVmJXjH/2.png" alt="food art work"/>
+                {% elif hiddengem.category == 'Drink' %}
+                <img src="https://i.postimg.cc/TwY7CCN5/3.png" alt="drink art work"/>
+                {% elif hiddengem.category == 'Park' %}
+                <img src="https://i.postimg.cc/bYH6KG29/3.png" alt="park art work"/>
+                {% elif hiddengem.category == 'Art' %}
+                <img src="https://i.postimg.cc/2yh3KR50/4.png" alt="art art work"/>
+                {% elif hiddengem.category == 'Attractions' %}
+                <img src="https://i.postimg.cc/13pcN2cc/5.png" alt="attraction art work"/>
+                {% elif hiddengem.category == 'Nightlife' %}
+                <img src="https://i.postimg.cc/3JQB12rZ/6.png" alt="nightlife art work"/>
+                {% elif hiddengem.category == 'Music' %}
+                <img src="https://i.postimg.cc/C57zjyLX/7.png" alt="music art work"/>
+                {% elif hiddengem.category == 'Theatre' %}
+                <img src="https://i.postimg.cc/bJb6YgNs/Untitled-design-15.png" alt="theatre art work"/>
+                {% else %}
+                <img src="https://i.postimg.cc/q7TxZzYf/Untitled-design-14.png" alt="museum art work"/>
+                {% endif %}
+            </div>
+            <div class="like-container">
+                <a href="{% url 'hiddengem-like' hiddengem.id %}">
+                    <img  class="icon" src="https://i.postimg.cc/HsKdFzqp/Untitled-design-18.png" alt="like button">
+                </a>
+                <p>Likes: {{ hiddengem.activity_set.all|length }}</p>
+           </div>
         </div>
-
-
         <h2 class="card-title">{{ hiddengem.title }}</h2> 
-        <a href="{% url 'hiddengem-like' hiddengem.id %}">
-            <img src="https://i.postimg.cc/HsKdFzqp/Untitled-design-18.png" alt="like button">
-        </a>
-        <p>Likes: {{ hiddengem.activity_set.all|length }}</p>
         <p>{{ hiddengem.category }}</p>
         <p>{{ hiddengem.location }}</p>
         <p>{{ hiddengem.description }}</p>
         <p>by: {{ hiddengem.user }}</p>
         {% if hiddengem.user == user %}
-        <a href="{% url 'hiddengem-update' hiddengem.id %}">
-            <img src="https://i.postimg.cc/nLFJh7p1/4.png" alt="edit button"/>
-        </a>
-        <a href="{% url 'hiddengem-delete' hiddengem.id %}">
-            <img src="https://i.postimg.cc/vmTGv9kZ/5.png" alt="delete button"/>
-        </a>
+        <div class="edit-delete0=-container">
+            <a href="{% url 'hiddengem-update' hiddengem.id %}">
+                <img class="edit_icons" src="https://i.postimg.cc/nLFJh7p1/4.png" alt="edit button"/>
+            </a>
+            <a href="{% url 'hiddengem-delete' hiddengem.id %}">
+                <img class="edit_icons" src="https://i.postimg.cc/vmTGv9kZ/5.png" alt="delete button"/>
+            </a>
+        </div>
         {% endif %}
+        
+        <a class="a_btn" href="/hiddengems/{{ hiddengem.id }}/add-comment/">Add Comment</a>
     </div>
+    </section>
 
-          
-    <div class="comments-container">
+    <secation class="comments-container">   
         {% for comment in comments %}
-        <div>
+        <div class="comment">
             <p>{{ comment.comment }} </p>
             <p>by: {{ comment.author }}</p>
-            <br>
+            <div class="comment-actions">
+                <a href="{% url 'comment-like' hiddengem.id comment.id %}">
+                    <img class="icon" src="https://i.postimg.cc/HsKdFzqp/Untitled-design-18.png" alt="like button">
+                </a>
+                <p>Likes: {{ comment.activity_set.all|length }}</p>
+                {% if hiddengem.user == user %}
+                <a href="{% url 'comment-update' hiddengem.id comment.id %}">
+                    <img class="edit_icons" src="https://i.postimg.cc/nLFJh7p1/4.png" alt="edit button"/>
+                </a>
+                <a href="{% url 'comment-delete' hiddengem.id comment.id %}">
+                    <img class="edit_icons" src="https://i.postimg.cc/vmTGv9kZ/5.png" alt="delete button"/>
+                </a>
+                {% endif %}
+            </div>
         </div>
-        <a href="{% url 'comment-like' hiddengem.id comment.id %}">
-            <img src="https://i.postimg.cc/HsKdFzqp/Untitled-design-18.png" alt="like button">
-        </a>
-        <p>Likes: {{ comment.activity_set.all|length }}</p>
-        {% if hiddengem.user == user %}
-        <a href="{% url 'comment-update' hiddengem.id comment.id %}">
-            <img src="https://i.postimg.cc/nLFJh7p1/4.png" alt="edit button"/>
-        </a>
-        <a href="{% url 'comment-delete' hiddengem.id comment.id %}">
-            <img src="https://i.postimg.cc/vmTGv9kZ/5.png" alt="delete button"/>
-        </a>
-        {% endif %}
         {% endfor %}
 
-        <ul><a class="a_btn" href="/hiddengems/{{ hiddengem.id }}/add-comment/">Add Comment</a></ul> 
-    </div>
-
-
-  
-</section>
+    </section>
+</main>
 {% endblock %}

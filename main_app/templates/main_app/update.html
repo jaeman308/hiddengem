@@ -14,8 +14,8 @@
     {% csrf_token %}
     {{ form.as_p}}
         <button type="submit" class="btn">Save Changes</button>
+        <a class="a_btn" href="{% url 'hiddengem-detail' hiddengem.id %}">Cancel</a>
 </form>
-<a class="a_btn" href="{% url 'hiddengem-detail' hiddengem.id %}">Cancel</a>
 </div> 
 
 
