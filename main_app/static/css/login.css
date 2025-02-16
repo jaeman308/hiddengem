@@ -1,0 +1,16 @@
+.page_content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+img {
+    margin: 20px;
+    width: 100%;
+    height: auto;
+}
+
+form{
+    border-radius: 5px;
+    border-color: var(--link-hover-color);
+}

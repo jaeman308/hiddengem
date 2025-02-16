@@ -6,25 +6,27 @@
 
 {% block content %}
 {% if user.is_authenticated %}
-<main>
+<main class="main_auth">
 <section class="logo_container_authenticated">
     <div class="home_conatiner_authenticated"> 
+        <h1>Welcome {{ user.username|upper }} !</h1>
+        <h2>Your hidden gems:</h2>
+        <div class="page_content-auth"> 
+        <form method="get">
+            {{ filter.form.as_p }}
+            <button class="btn" type="submit">Search</button>
+        </form>
+        
         <div class="content_container_authenticated">
-            <h1>Welcome {{ user.username|upper }} !</h1>
-            <h2>Your hidden gems:</h2>
-
-            <form method="get">
-                {{ filter.form.as_p }}
-                <button class="btn" type="submit">Search</button>
-            </form>
-
             {% for hiddengem in filter.qs %}
-                
-                <div>
+                <div class="allcards">
+                <div class="card">
+                    <a href="/hiddengems/{{ hiddengem.id }}"><img src="https://i.postimg.cc/vTvDXgY6/Untitled-design-21.png" alt="user hiddengem"></a>                 
                     <h3><a href="/hiddengems/{{ hiddengem.id }}">{{ hiddengem.title }}</a></h3>
-                    <p>{{ hiddengem.category }}</p>
+                    <!-- <p>{{ hiddengem.category }}</p>
                     <p>{{ hiddengem.location }}</p>
-                    <p>{{ hiddengem.description }}</p>
+                    <p>{{ hiddengem.description }}</p> -->
+                </div>
                 </div>
             {% empty %}
                 <p> No Hidden Gems Found!</p>
@@ -33,12 +35,13 @@
 
             
         </div>
+        </div>
 
     </div>
 </section>
-
+</main>
 {% else %}
-
+<main class="main_unauth">
 <div class="home_conatiner_unauthenticated"> 
 <section class="logo_container_unauthenticated">
         <div class="content_container_unauthenticated">
