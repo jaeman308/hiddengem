@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from main_app.models import HiddenGem, Activity, User, Comment
 from django.contrib.auth import login
+from django.urls import reverse
 from .forms import HiddenGemForm, CustomUser, HiddenGemCommentForm
 from .filters import HiddenGemFilter, UserHiddenGemFilter
 

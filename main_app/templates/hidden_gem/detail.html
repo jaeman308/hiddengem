@@ -11,7 +11,7 @@
 <section class="page-header">
   <h1>{{ hiddengem.title|capfirst}} Details:</h1>
 </section>
-
+<div class="content-container">
 <section class="hiddengem-container">
     <div class="card-info">
         <div class="image-like-container">
@@ -35,21 +35,25 @@
                 {% else %}
                 <img src="https://i.postimg.cc/q7TxZzYf/Untitled-design-14.png" alt="museum art work"/>
                 {% endif %}
+                <div class="like-container">
+                    <a href="{% url 'hiddengem-like' hiddengem.id %}">
+                        <img  class="icon" src="https://i.postimg.cc/HsKdFzqp/Untitled-design-18.png" alt="like button">
+                    </a>
+                    <p>Likes: {{ hiddengem.activity_set.all|length }}</p>
+               </div>
             </div>
-            <div class="like-container">
-                <a href="{% url 'hiddengem-like' hiddengem.id %}">
-                    <img  class="icon" src="https://i.postimg.cc/HsKdFzqp/Untitled-design-18.png" alt="like button">
-                </a>
-                <p>Likes: {{ hiddengem.activity_set.all|length }}</p>
-           </div>
         </div>
         <h2 class="card-title">{{ hiddengem.title }}</h2> 
+        <h3>Category:</h3>
         <p>{{ hiddengem.category }}</p>
+        <h3>Location:</h3>
         <p>{{ hiddengem.location }}</p>
-        <p>{{ hiddengem.description }}</p>
-        <p>by: {{ hiddengem.user }}</p>
+        <h3>Description:</h3>
+        <p> {{ hiddengem.description }}</p>
+        <h3>By: </h3>
+        <p>{{ hiddengem.user }}</p>
         {% if hiddengem.user == user %}
-        <div class="edit-delete0=-container">
+        <div class="edit-delete-container">
             <a href="{% url 'hiddengem-update' hiddengem.id %}">
                 <img class="edit_icons" src="https://i.postimg.cc/nLFJh7p1/4.png" alt="edit button"/>
             </a>
@@ -63,7 +67,7 @@
     </div>
     </section>
 
-    <secation class="comments-container">   
+    <section class="comments-container">   
         {% for comment in comments %}
         <div class="comment">
             <p>{{ comment.comment }} </p>
@@ -86,5 +90,6 @@
         {% endfor %}
 
     </section>
+</div>
 </main>
 {% endblock %}
