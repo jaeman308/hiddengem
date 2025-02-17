@@ -137,6 +137,8 @@ border-radius: 10px;
 
 .comment p {
     margin: 5px 0;
+    font-size: var(--font-reg);
+
 }
 
 .comment-actions {

@@ -71,7 +71,7 @@
         {% for comment in comments %}
         <div class="comment">
             <p>{{ comment.comment }} </p>
-            <p>by: {{ comment.author }}</p>
+            <p>By: {{ comment.author }}</p>
             <div class="comment-actions">
                 <a href="{% url 'comment-like' hiddengem.id comment.id %}">
                     <img class="icon" src="https://i.postimg.cc/HsKdFzqp/Untitled-design-18.png" alt="like button">

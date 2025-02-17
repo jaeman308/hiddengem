@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block content %}
+<main>
 <div class="page-body">
 <div class="page-header">
 <img src="https://i.postimg.cc/vmTGv9kZ/5.png" alt="location and map"/>
@@ -16,10 +17,10 @@
     <form action="" method="post" class="form">
         {% csrf_token%}
         <button type="submit" class="btn danger">Delete</button>
-        <a class="a_btn" href="{% url 'hiddengem-detail' hiddengem.id %}" class="'btn secondary">Cancel</a>
+        <a class="a_btn" href="{% url 'hiddengem-detail' hiddengem.id %}" class="'a_btn">Cancel</a>
     </form>
 </div>
 </div> 
-
+</main>
 
 {% endblock %} 
