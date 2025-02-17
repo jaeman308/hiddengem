@@ -9,7 +9,7 @@ class HiddenGemForm(forms.ModelForm):
         model = HiddenGem
         fields = ['title', 'category', 'location', 'description']
 
-class CustomUser(UserCreationForm):
+class CustomUserForm(UserCreationForm):
     email = forms.EmailField(required=True)
     first_name = forms.CharField(max_length=30, required=True)
     last_name= forms.CharField(max_length=30, required=True)
