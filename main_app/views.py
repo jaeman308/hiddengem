@@ -119,15 +119,15 @@ def userhome(request):
 def signup(request): 
     error_message= ''
     if request.method == 'POST':
-        form = CustomUser(request.POST)
+        form = CustomUserForm(request.POST)
         if form.is_valid():
             user = form.save()
-            log(request, user)
+            login(request, user)
             return redirect('home')
         else:
             error_message = 'Invalid sign up - try agian'
     else: 
-        form = CustomUser()
+        form = CustomUserForm()
     context = {'form': form, 'error_message': error_message}
     return render(request, 'main_app/signup.html', context)
 
