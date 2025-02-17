@@ -28,10 +28,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-if not 'ON_HEROKU' in os.environ:
-    DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+DEBUG = False if os.getenv('ON_HEROKU') else True
+
+ALLOWED_HOSTS = ['hiddengem-c5bf2312043b.herokuapp.com']
 
 
 # Application definition
@@ -139,7 +139,7 @@ STATIC_URL = 'static/'
 
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
-LOGIN_URL = 'userhome'
+LOGIN_URL = 'home'
 
 LOGIN_REDIRECT_URL = 'home'
 
