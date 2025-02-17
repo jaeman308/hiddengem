@@ -10,7 +10,7 @@ class HiddenGemFilter(django_filters.FilterSet):
 class UserHiddenGemFilter(django_filters.FilterSet):
     class Meta:
         model = HiddenGem
-        fields = ['category'] 
+        fields = ['category', "title"] 
 
     def __init__(self, *args, **kwargs):
         user = kwargs.pop('user', None)
