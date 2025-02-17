@@ -29,7 +29,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-DEBUG = False if os.getenv('ON_HEROKU') else True
+DEBUG = True if os.getenv('ON_HEROKU') else True
 
 ALLOWED_HOSTS = ['*']
 
