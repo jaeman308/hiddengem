@@ -31,7 +31,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 
 DEBUG = False if os.getenv('ON_HEROKU') else True
 
-ALLOWED_HOSTS = ['hiddengem-c5bf2312043b.herokuapp.com']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
