@@ -11,6 +11,7 @@
 </section>
 
 <section class="search-form-container">
+  <h2>Select from users or category to explore more gems!</h2>
   <form method="get">
     {{ filter.form.as_p }}
     <button class="btn" type="submit">Search</button>
@@ -18,6 +19,7 @@
 </section>
 
 <section class="hiddengem-container">
+  {% if filter.qs %}
     {% for hiddengem in filter.qs %}
     <div class="content_container">
       <div class="card">
@@ -44,13 +46,15 @@
               <img src="https://i.postimg.cc/q7TxZzYf/Untitled-design-14.png" alt="museum art work"/>
               {% endif%}
             </div>
-            <h2 class="card-title">{{ hiddengem.title }}</h2>
+            <h2 class="card-title">{{ hiddengem.title|capfirst }}</h2>
           </div>
         </a>
       </div>
     </div>
     {% endfor %}
-  
+  {% else %}
 </section>
+<p> No Hidden Gems Found!</p>
+{% endif%}
 </main>
 {% endblock %}

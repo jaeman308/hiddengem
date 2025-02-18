@@ -13,29 +13,31 @@
 </head>
 <body>
     <header>
-        <div class="header-logo-container">
-            <a href="/">
-                <img class="logo-image" src=" https://i.postimg.cc/x1R61TmJ/Vibe-vault-1.png" alt="logo"/>
-                </a>
+        <div class="header-content">
+            <div class="header-logo-container">
+                <a href="/">
+                    <img class="logo-image" src=" https://i.postimg.cc/x1R61TmJ/Vibe-vault-1.png" alt="logo"/>
+                    </a>
+            </div>
+            <nav>
+                <ul>
+                    {% if user.is_authenticated %}
+                    <li><a href="{% url 'hiddengem-create' %}">New Hidden Gem</a></li>
+                    <li><a href="{% url 'hiddengem-index' %}">All Hidden Gems</a></li>
+                    <li>
+                        <form id="logout-form" method="post" action="{% url 'logout' %}">
+                            {% csrf_token %}
+                            <button type="'submit">Log Out</button>
+                        </form>
+                    </li>
+                    {% else %}
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                    <li><a href="{% url 'signup' %}">Sign Up</a></li>
+                
+                    {% endif %}
+                </ul>
+            </nav>
         </div>
-        <nav>
-            <ul>
-                {% if user.is_authenticated %}
-                <li><a href="{% url 'hiddengem-create' %}">New Hidden Gem</a></li>
-                <li><a href="{% url 'hiddengem-index' %}">All Hidden Gems</a></li>
-                <li>
-                    <form id="logout-form" method="post" action="{% url 'logout' %}">
-                        {% csrf_token %}
-                        <button type="'submit">Log Out</button>
-                    </form>
-                </li>
-                {% else %}
-                <li><a href="{% url 'login' %}">Login</a></li>
-                <li><a href="{% url 'signup' %}">Sign Up</a></li>
-            
-                {% endif %}
-            </ul>
-        </nav>
     </header>
     <main>
         {% block content %}

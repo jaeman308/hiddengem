@@ -5,45 +5,47 @@
 {% endblock %}
 
 {% block content %}
+<main>
 {% if user.is_authenticated %}
-<main class="main_auth">
-<section class="logo_container_authenticated">
-    <div class="home_conatiner_authenticated"> 
-        <h1>Welcome {{ user.username|upper }} !</h1>
-        <h2>Your hidden gems:</h2>
-        <div class="page_content-auth"> 
-        <form method="get">
-            {{ filter.form.as_p }}
-            <button class="btn" type="submit">Search</button>
-        </form>
-        
-        <div class="content_container_authenticated">
-            {% for hiddengem in filter.qs %}
-                <div class="allcards">
-                <div class="card">
-                    <a href="/hiddengems/{{ hiddengem.id }}"><img src="https://i.postimg.cc/vTvDXgY6/Untitled-design-21.png" alt="user hiddengem"></a>                 
-                    <h3><a href="/hiddengems/{{ hiddengem.id }}">{{ hiddengem.title }}</a></h3>
-                </div>
-                </div>
-            {% empty %}
-                <p> No Hidden Gems Found!</p>
+    <div class="page-body-auth">
+        <div class="home_conatiner_authenticated"> 
+            <h1>Welcome {{ user.username|upper }} !</h1>
+            <h2>Your hidden gems:</h2>
+    <section class="logo_container_authenticated">
+            <div class="page_content-auth"> 
+                <form method="get">
+                    {{ filter.form.as_p }}
+                    <button class="btn" type="submit">Search</button>
+                </form>
                 
-            {% endfor %}
-
+                <div class="content_container_authenticated">
+                    {% for hiddengem in filter.qs %}
+                    <div class="allcards">
+                        <div class="card">
+                            <a href="/hiddengems/{{ hiddengem.id }}"> <img src="https://i.postimg.cc/6pHGT6Xk/Untitled-design-23.png" alt="user hiddengem"></a>                 
+                            <h3><a href="/hiddengems/{{ hiddengem.id }}">{{ hiddengem.title|capfirst|upper }}</a></h3>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <p> No Hidden Gems Found!</p>
+                    
+                    {% endfor %}
+                    
+                    
+                </div>
+            </div>
             
         </div>
-        </div>
-
+    </section>
     </div>
-</section>
-</main>
 {% else %}
-<main class="main_unauth">
+
 <div class="home_conatiner_unauthenticated"> 
 <section class="logo_container_unauthenticated">
         <div class="content_container_unauthenticated">
             <h1>HIDDENGEM</h1>
             <h3>Local Gems, Purely Authentic Finds.</h3>
+            <p>Tired of the same old places? We help you discover the best-kept secrets your city has to offer.<br> Experience local, authentic finds shared by your community.</p>
             <a href="{% url 'signup' %}" class="a_btn">JOIN NOW</a>
             
         </div>
@@ -52,7 +54,6 @@
     </div>
 </section>
 </div>
-
-</main>
 {% endif %}
+</main>
 {% endblock %}

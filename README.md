@@ -36,3 +36,6 @@ This app will also AUU users to create their own hidden gems. They can filter on
 * Python
 * Django
 * SQL
+
+### Attributes
+* Canva: Images and logo. 

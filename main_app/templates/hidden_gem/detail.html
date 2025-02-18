@@ -9,7 +9,7 @@
 {% block content %}
 <main>
 <section class="page-header">
-  <h1>{{ hiddengem.title|capfirst}} Details:</h1>
+  <h1>{{ hiddengem.title|upper }} DETAILS:</h1>
 </section>
 <div class="content-container">
 <section class="hiddengem-container">
@@ -33,25 +33,26 @@
                 {% elif hiddengem.category == 'Theatre' %}
                 <img src="https://i.postimg.cc/bJb6YgNs/Untitled-design-15.png" alt="theatre art work"/>
                 {% else %}
-                <img src="https://i.postimg.cc/q7TxZzYf/Untitled-design-14.png" alt="museum art work"/>
-                {% endif %}
-                <div class="like-container">
-                    <a href="{% url 'hiddengem-like' hiddengem.id %}">
-                        <img  class="icon" src="https://i.postimg.cc/HsKdFzqp/Untitled-design-18.png" alt="like button">
-                    </a>
-                    <p>Likes: {{ hiddengem.activity_set.all|length }}</p>
-               </div>
+                <img src="https://i.postimg.cc/q7TxZzYf/Untitled-design-14.png" alt="museum art work"/>              
+            {% endif %}
+
+            <div class="like-container">
+                <a href="{% url 'hiddengem-like' hiddengem.id %}">
+                    <img  class="icon" src="https://i.postimg.cc/HsKdFzqp/Untitled-design-18.png" alt="like button">
+                 </a>
+                <p>Likes: {{ hiddengem.activity_set.all|length }}</p>
+            </div>
             </div>
         </div>
-        <h2 class="card-title">{{ hiddengem.title }}</h2> 
+        <h2 class="card-title">{{ hiddengem.title|upper }}</h2> 
         <h3>Category:</h3>
-        <p>{{ hiddengem.category }}</p>
+        <p>{{ hiddengem.category|capfirst }}</p>
         <h3>Location:</h3>
-        <p>{{ hiddengem.location }}</p>
+        <p>{{ hiddengem.location|capfirst }}</p>
         <h3>Description:</h3>
-        <p> {{ hiddengem.description }}</p>
+        <p> {{ hiddengem.description|capfirst }}</p>
         <h3>By: </h3>
-        <p>{{ hiddengem.user }}</p>
+        <p>{{ hiddengem.user|capfirst }}</p>
         {% if hiddengem.user == user %}
         <div class="edit-delete-container">
             <a href="{% url 'hiddengem-update' hiddengem.id %}">
