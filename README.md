@@ -12,7 +12,7 @@ An app that allows you to find all hidden gems, create and share your own hidden
 
 ### Key Features:
 #### Browse all hidden gems and filter on them:
-This app will allow AUU users to browser all the hidden gems that have been created by other people. They can click into each hidden gem for details, such as title, category, location, description and author. Users can also filter on the the giddengems by "Category" or "Author".
+This app will allow AUU users to browser all the hidden gems that have been created by other people. They can click into each hidden gem for details, such as title, category, location, description and author. Users can also filter on the the hidden gems by "Category" or "Author".
 
 #### Interact with all hidden gems recommendations:
 This app will allow AUU users to like and comment on other users' posts. They can also like other people's comments as well.
